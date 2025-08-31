@@ -1,0 +1,121 @@
+.landing {
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  color: #fff;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  max-width: 500px;
+}
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #e0e7ff;
+}
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+.btn-primary {
+  background: #fff;
+  color: #2563eb;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: #f9fafb;
+}
+.btn-secondary {
+  border: 2px solid #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: #fff;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hero-image img {
+  max-width: 400px;
+  border-radius: 1rem;
+}
+
+/* Features */
+.features {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.feature {
+  background: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.feature:hover {
+  transform: translateY(-5px);
+}
+.feature .icon {
+  width: 40px;
+  height: 40px;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+.feature h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: #2563eb;
+  color: #fff;
+}
+.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.cta p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-image img {
+    margin-top: 2rem;
+    max-width: 100%;
+  }
+}
