@@ -9,7 +9,6 @@ export default function Home() {
     <>
     <Navbar/>
     <div className="landing">
-      {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
           <h1>Manage Your Cargo with Ease</h1>

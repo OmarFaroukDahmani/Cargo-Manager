@@ -1,12 +1,13 @@
 .homepage {
   max-width: 1200px;
   margin: auto;
-  padding: 2rem 1rem;
+  padding: auto;
   font-family: Arial, sans-serif;
 }
 
-/* Header */
 .home-header {
+  display: flex;
+  justify-content: space-between;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -15,13 +16,47 @@
   font-weight: bold;
   color: #1f2937;
 }
-.home-header p {
+#sec {
+  text-align: center;
   font-size: 1rem;
   color: #6b7280;
   margin-top: 0.5rem;
 }
 
-/* Stats Section */
+.greeting{
+  font-size: 25px;
+
+}
+.greeting span{
+  text-transform: capitalize;
+  color: #2563eb;
+}
+
+button{
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.logout{
+  background-color: #4988c0;
+  height: 50px;
+  font-size: 16px;
+}
+
+.edit{
+  background-color: #45a049;
+  margin-left: 10px ;
+}
+
+.delete{
+  background-color: red;
+  margin-left: 10px ;
+}
+
+
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -42,7 +77,27 @@
   color: #2563eb;
 }
 
-/* Recent Activity */
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px ;
+}
+
+.button button {
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button button:hover {
+  background-color: #45a049;
+}
+
 .activity h2 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
@@ -61,7 +116,6 @@
   color: #374151;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
   .home-header h1 {
     font-size: 1.5rem;

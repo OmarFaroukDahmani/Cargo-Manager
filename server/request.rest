@@ -20,3 +20,23 @@ Content-Type: application/json
     "email" : "a@o.c",
     "password" : "password"
 }
+
+###
+
+POST http://localhost:5000/create
+Content-Type: application/json
+
+{
+    "user_id": 15,
+    "tracking_number": "Advd5f55ef",
+    "description": "This is the description of the first cargo",
+    "status": "delivered",
+    "title":",gks,g",
+    "origin" :"gafsa",
+    "destination":"tunis",
+    "price":"252.5"
+}
+
+###
+
+GET http://localhost:5000/packages/15
