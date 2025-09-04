@@ -3,7 +3,7 @@ import { useState } from 'react';
 import '../styles/sign.css';
 
 export default function Login() {
-  const [values, setValues] = useState({ email: "", password: "" });
+  const [values, setValues] = useState({ email: "", password: "", message: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ export default function Login() {
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ email: values.email, password: values.password }),
       });
 
       const data = await response.json();
@@ -20,15 +20,14 @@ export default function Login() {
 
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
-        alert("Login successful!");
-        window.location.href = "/dashboard"; // redirect example
-      } else {
-        alert(data.message);
-      }
 
+        window.location.href = `/dashboard/${data.user.id}`;
+      } else {
+        setValues({ ...values, message: data.message });
+      }
     } catch (error) {
       console.error("Error:", error);
-      alert("Something went wrong!");
+      setValues({ ...values, message: "Something went wrong. Please try again." });
     }
   };
 
@@ -54,9 +53,14 @@ export default function Login() {
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
           <button className="login-button" type="submit">Login</button>
+          
+          <p className="error">{values.message}</p> 
+
           <p className="register-text">
             Don't you have an account? 
-            <span><Link className="register-link" to={'/sign-up'}>Register</Link></span>
+            <span>
+              <Link className="register-link" to={'/sign-up'}>Register</Link>
+            </span>
           </p>
         </form>
       </div>
