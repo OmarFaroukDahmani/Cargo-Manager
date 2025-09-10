@@ -27,10 +27,10 @@ app.post('/sign-up', async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { userid, password } = req.body;
 
-  const sql = "SELECT * FROM users WHERE email = ?";
-  db.query(sql, [email], async (err, results) => {
+  const sql = "SELECT * FROM users WHERE email = ? OR username=?";
+  db.query(sql, [userid, userid], async (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
 
     if (results.length === 0) {
@@ -80,7 +80,6 @@ app.get('/packages/:user_id', (req, res) => {
   });
 });
 
-// Fetch a single package for editing
 app.get('/edit/:id', (req, res) => {
   const packageId = req.params.id;
   const sql = "SELECT * FROM packages WHERE id = ?";
@@ -91,7 +90,6 @@ app.get('/edit/:id', (req, res) => {
   });
 });
 
-// Update a package
 app.put('/edit/:id', (req, res) => {
   const packageId = req.params.id;
   const { title, origin, destination, price, tracking_number, description, status, user_id } = req.body;
@@ -102,6 +100,18 @@ app.put('/edit/:id', (req, res) => {
   });
 });
 
+app.get('/stats', (req, res) => {
+  const sql = `
+    SELECT 
+      (SELECT COUNT(*) FROM users) AS userCount,
+      (SELECT COUNT(*) FROM packages) AS packageCount
+  `;
+
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(results[0]);
+  });
+});
 
 
 

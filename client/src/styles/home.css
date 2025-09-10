@@ -1,121 +1,178 @@
+/* General */
 .landing {
-  font-family: Arial, sans-serif;
-  color: #1f2937;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
 }
 
-/* Hero Section */
+/* Hero */
 .hero {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 3rem 1.5rem;
-  background: linear-gradient(to right, #2563eb, #1d4ed8);
-  color: #fff;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(90deg, rgba(0,198,255,0.1), rgba(0,123,255,0.1));
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.15);
+  z-index: 1;
+  border-radius: 1rem;
 }
 
 .hero-content {
-  max-width: 500px;
+  flex: 1 1 400px;
+  max-width: 600px;
+  z-index: 2;
+  text-align: center;
 }
+
 .hero-content h1 {
   font-size: 2.5rem;
+  font-weight: 700;
   margin-bottom: 1rem;
 }
+
 .hero-content p {
   font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #e0e7ff;
+  margin-bottom: 2rem;
+  line-height: 1.5;
 }
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
+
+.hero-buttons a {
+  margin: 0 0.5rem;
+  padding: 0.8rem 2rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
+
 .btn-primary {
-  background: #fff;
-  color: #2563eb;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-.btn-primary:hover {
-  background: #f9fafb;
-}
-.btn-secondary {
-  border: 2px solid #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
+  background: #00c6ff;
   color: #fff;
 }
+
+.btn-primary:hover {
+  background: #009ecf;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid #00c6ff;
+  color: #00c6ff;
+}
+
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: #00c6ff;
+  color: #fff;
+}
+
+.hero-image {
+  flex: 1 1 400px;
+  max-width: 500px;
+  z-index: 2;
 }
 
 .hero-image img {
-  max-width: 400px;
+  width: 100%;
   border-radius: 1rem;
+  object-fit: cover;
 }
 
 /* Features */
 .features {
-  padding: 3rem 1.5rem;
   text-align: center;
+  padding: 4rem 1rem;
 }
-.features h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
+
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
+  margin-top: 2rem;
 }
-.feature {
-  background: #f9fafb;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  text-align: center;
-  transition: transform 0.2s;
+
+.feature-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.feature:hover {
+
+.feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
-.feature .icon {
+
+.feature-card .icon {
   width: 40px;
   height: 40px;
-  color: #2563eb;
+  color: #00c6ff;
   margin-bottom: 1rem;
 }
-.feature h3 {
-  font-size: 1.25rem;
+
+/* Stats */
+.stats {
+  background: #f8f9fa;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.stat {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  min-width: 160px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.stat .icon {
+  width: 40px;
+  height: 40px;
+  color: #00c6ff;
   margin-bottom: 0.5rem;
+}
+
+.stat h3 {
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
 }
 
 /* CTA */
 .cta {
   text-align: center;
-  padding: 3rem 1.5rem;
-  background: #2563eb;
+  padding: 4rem 1rem;
+  background: #00c6ff;
   color: #fff;
+  border-radius: 1rem;
+  margin: 3rem 1rem;
 }
+
 .cta h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+
 .cta p {
-  margin-bottom: 1.5rem;
   font-size: 1.1rem;
+  margin-bottom: 2rem;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero-image img {
-    margin-top: 2rem;
-    max-width: 100%;
-  }
+@media(max-width:768px){
+  .hero-content h1 { font-size: 2rem; }
+  .cta h2 { font-size: 1.7rem; }
 }

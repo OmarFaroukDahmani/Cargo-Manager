@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import { Menu, X } from "lucide-react"  
-import '../styles/navbar.css'
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";  
+import '../styles/navbar.css';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -26,12 +26,13 @@ export default function Navbar() {
             <li><Link to="/contact">Contact</Link></li>
             <li><Link to="/support">Support</Link></li>
           </ul>
-          <div className="logs">
-            <Link to="/sign-up" className="signup">Create Account</Link>
-            <Link to="/login" className="login">Log In</Link>
+
+          <div className="nav-actions">
+            <Link to="/sign-up" className="btn btn-signup">Create Account</Link>
+            <Link to="/login" className="btn btn-login">Log In</Link>
           </div>
         </nav>
       </div>
     </header>
-  )
+  );
 }

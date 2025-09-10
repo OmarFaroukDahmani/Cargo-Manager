@@ -3,7 +3,7 @@ import { useState } from 'react';
 import '../styles/sign.css';
 
 export default function Login() {
-  const [values, setValues] = useState({ email: "", password: "", message: "" });
+  const [values, setValues] = useState({ userid: "", password: "", message: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,7 +12,7 @@ export default function Login() {
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: values.email, password: values.password }),
+        body: JSON.stringify({ userid: values.userid, password: values.password }),
       });
 
       const data = await response.json();
@@ -20,7 +20,6 @@ export default function Login() {
 
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
-
         window.location.href = `/dashboard/${data.user.id}`;
       } else {
         setValues({ ...values, message: data.message });
@@ -32,17 +31,19 @@ export default function Login() {
   };
 
   return (
-    <div className="body">
-      <div className="login-container">
-        <h2 className="login-title">Login</h2>
-        <form onSubmit={handleSubmit} className="login-form">
+    <div className="register-body"> {/* same fullscreen background */}
+      <div className="register-card"> {/* same card style */}
+        <h2 className="register-title">Welcome Back</h2>
+        <p className="register-subtitle">Log in to continue managing your cargodo 📦</p>
+
+        <form onSubmit={handleSubmit} className="register-form">
           <input
             className="form-input"
-            type="email"
+            type="text"
             required
-            placeholder="Email"
-            value={values.email}
-            onChange={(e) => setValues({ ...values, email: e.target.value })}
+            placeholder="Username / Email"
+            value={values.userid}
+            onChange={(e) => setValues({ ...values, userid: e.target.value })}
           />
           <input
             className="form-input"
@@ -52,15 +53,13 @@ export default function Login() {
             value={values.password}
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
-          <button className="login-button" type="submit">Login</button>
-          
-          <p className="error">{values.message}</p> 
+          <button className="register-button" type="submit">Login</button>
+
+          {values.message && <p className="error">{values.message}</p>}
 
           <p className="register-text">
-            Don't you have an account? 
-            <span>
-              <Link className="register-link" to={'/sign-up'}>Register</Link>
-            </span>
+            Don’t have an account?{" "}
+            <Link className="register-link" to="/sign-up">Register</Link>
           </p>
         </form>
       </div>

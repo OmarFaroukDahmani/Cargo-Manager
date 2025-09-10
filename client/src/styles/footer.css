@@ -1,90 +1,54 @@
 .footer {
-  background: #1f2937; /* dark gray */
-  color: #fff;
-  padding: 2rem 1rem 1rem;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  padding: 2rem 1rem;
+  font-family: 'Poppins', sans-serif;
 }
 
-.footer-container {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-.footer-section h3 {
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
-  font-weight: 600;
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
 }
 
 .footer-logo {
   font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .footer-text {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: #d1d5db;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 0.3rem;
 }
 
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-section a {
+.footer-links a {
+  margin: 0 0.8rem;
+  color: #f0f0f0;
   text-decoration: none;
-  color: #d1d5db;
-  transition: color 0.2s ease;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
 }
 
-.footer-section a:hover {
-  color: #60a5fa; /* blue hover */
+.footer-links a:hover {
+  color: #00c6ff;
 }
 
-.socials {
-  display: flex;
-  gap: 0.75rem;
+.footer-socials a {
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
 }
 
-.socials a {
-  font-size: 1.25rem;
-  color: #d1d5db;
-  transition: color 0.2s;
-}
-
-.socials a:hover {
-  color: #60a5fa;
+.footer-socials a:hover {
+  transform: scale(1.2);
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 2rem;
-  font-size: 0.875rem;
-  color: #9ca3af;
-}
-
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .socials {
-    justify-content: center;
-  }
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #888;
 }

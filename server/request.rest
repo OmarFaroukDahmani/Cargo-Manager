@@ -39,4 +39,5 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5000/packages/15
+GET http://localhost:5000/stats
+Content-Type: application/json

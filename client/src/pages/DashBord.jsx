@@ -14,7 +14,7 @@ export default function DashBord() {
   // Fetch user packages on component mount
   useEffect(() => {
     if (!user) {
-      navigate("/login");
+      navigate("/");
       return;
     }
 
