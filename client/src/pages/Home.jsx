@@ -9,7 +9,7 @@ export default function Home() {
   const [stats, setStats] = useState({ userCount: 0, packageCount: 0 });
 
   useEffect(() => {
-    fetch("http://localhost:5000/stats")
+    fetch("https://cargo-mangement-api-5d076fcb0967.herokuapp.com/stats")
       .then((res) => res.json())
       .then((data) => setStats(data))
       .catch((err) => console.error("Failed to fetch stats:", err));

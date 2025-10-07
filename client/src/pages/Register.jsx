@@ -15,7 +15,7 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/sign-up", {
+      const response = await fetch("https://cargo-mangement-api-5d076fcb0967.herokuapp.com/sign-up", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),

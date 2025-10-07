@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const bcrypt = require('bcrypt');
 const db = require('./db');
 
@@ -116,5 +115,5 @@ app.get('/stats', (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Server listening on port ${PORT}`);
 });

@@ -20,7 +20,7 @@ export default function DashBord() {
 
     const fetchPackages = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/packages/${user.id}`);
+        const response = await fetch(`https://cargo-mangement-api-5d076fcb0967.herokuapp.com/${user.id}`);
         const data = await response.json();
         setPackages(data);
       } catch (error) {

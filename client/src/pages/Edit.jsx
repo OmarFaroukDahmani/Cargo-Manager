@@ -22,7 +22,7 @@ export default function Edit() {
   useEffect(() => {
     const fetchPackage = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/edit/${id}`);
+        const response = await fetch(`https://cargo-mangement-api-5d076fcb0967.herokuapp.com/${id}`);
         const data = await response.json();
         setValues({
           title: data.title,
@@ -53,7 +53,7 @@ export default function Edit() {
         price: parseFloat(values.price)
       };
 
-      const response = await fetch(`http://localhost:5000/edit/${id}`, {
+      const response = await fetch(`https://cargo-mangement-api-5d076fcb0967.herokuapp.com/edit/${id}`, {
         method: "PUT", // Update instead of create
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

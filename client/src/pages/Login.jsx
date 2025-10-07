@@ -9,7 +9,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("https://cargo-mangement-api-5d076fcb0967.herokuapp.com/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userid: values.userid, password: values.password }),
