@@ -1,11 +1,23 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const db = require('./db');
+const cors = require('cors'); 
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+
+app.use(cors({
+  origin: "https://cargodo.pages.dev",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
+app.get("/", (req, res) => {
+  res.send("Cargo Management API is running 🚛");
+});
+
 
 app.post('/sign-up', async (req, res) => {
   try {
