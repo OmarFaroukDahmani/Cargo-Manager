@@ -4,10 +4,9 @@ const bcrypt = require('bcrypt');
 const db = require('./db');
 
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.post('/sign-up', async (req, res) => {
   try {
@@ -116,6 +115,6 @@ app.get('/stats', (req, res) => {
 
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Server listening on port ${port}`);
 });
