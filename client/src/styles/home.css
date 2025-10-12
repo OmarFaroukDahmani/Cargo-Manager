@@ -109,3 +109,94 @@
   margin-top: 1rem;
   display: inline-block;
 }
+.stats {
+  background: linear-gradient(135deg, #0046ff0f, #00b4d80f);
+  padding: 5rem 2rem;
+  text-align: center;
+  color: #1e2a38;
+}
+
+.stats h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #0046ff;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.stat {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,70,255,0.15), rgba(0,180,216,0.15));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 16px;
+}
+
+.stat:hover::before {
+  opacity: 1;
+}
+
+.stat:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.stat .icon {
+  color: #0046ff;
+  background: rgba(0, 70, 255, 0.1);
+  padding: 0.8rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.stat h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #081f5c;
+  margin-bottom: 0.3rem;
+}
+
+.stat p {
+  color: #555;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .stats {
+    padding: 3rem 1rem;
+  }
+
+  .stats h2 {
+    font-size: 1.7rem;
+  }
+
+  .stat {
+    padding: 1.5rem;
+  }
+
+  .stat h3 {
+    font-size: 1.6rem;
+  }
+}
