@@ -29,7 +29,7 @@ export default function Dashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    navigate("/login");
+    navigate("/");
   };
 
   const handleEdit = (id) => {
