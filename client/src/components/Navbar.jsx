@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";  
-import '../styles/navbar.css';
+import { Menu, X } from "lucide-react";
+import "../styles/navbar.css";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -9,13 +9,12 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <div className="nav-container">
-        <h1 className="logo">CargoDo</h1>
+        <Link to="/" className="logo">CargoDo</Link>
 
-        {/* Hamburger for mobile */}
         <button 
           className="menu-btn" 
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          onClick={() => setOpen(!open)} 
+          aria-label="Toggle navigation"
         >
           {open ? <X size={24}/> : <Menu size={24}/>}
         </button>
@@ -28,8 +27,8 @@ export default function Navbar() {
           </ul>
 
           <div className="nav-actions">
-            <Link to="/sign-up" className="btn btn-signup">Create Account</Link>
-            <Link to="/login" className="btn btn-login">Log In</Link>
+            <Link to="/sign-up" className="btn-signup">Create Account</Link>
+            <Link to="/login" className="btn-login">Log In</Link>
           </div>
         </nav>
       </div>
