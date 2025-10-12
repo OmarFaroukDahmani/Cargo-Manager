@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent } from "../components/Card";
-import "../styles/card.css";
-import '../styles/dashbord.css';
-import Footer from "../components/Footer";
+import { Truck, Package, ClipboardList, Users, PlusCircle, LogOut } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { Truck, Package, ClipboardList, Users } from "lucide-react";
+import "../styles/dashbord.css";
 
-export default function DashBord() {
+export default function Dashboard() {
   const [packages, setPackages] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
 
-  // Fetch user packages on component mount
   useEffect(() => {
     if (!user) {
       navigate("/");
@@ -30,86 +26,78 @@ export default function DashBord() {
 
     fetchPackages();
   }, [user, navigate]);
-  // edit package
-  const handleEdit = (id) =>{
-    navigate(`/edit/${id}`)
-  }
-  // Logout function
+
   const handleLogout = () => {
     localStorage.removeItem("user");
     navigate("/login");
   };
 
-  // Stats calculations
-  const activeShipments = packages.filter(p => p.status === "active").length;
-  const deliveredPackages = packages.filter(p => p.status === "delivered").length;
-  const pendingOrders = packages.filter(p => p.status === "pending").length;
-  const onTheWay = packages.filter(p => p.status === "on_the_way").length;
+  const handleEdit = (id) => {
+    navigate(`/edit/${id}`);
+  };
+
+  // Stats
+  const stats = [
+    { label: "Active Shipments", value: packages.filter(p => p.status === "active").length, icon: <Truck /> },
+    { label: "Delivered", value: packages.filter(p => p.status === "delivered").length, icon: <Package /> },
+    { label: "Pending Orders", value: packages.filter(p => p.status === "pending").length, icon: <ClipboardList /> },
+    { label: "On The Way", value: packages.filter(p => p.status === "on_the_way").length, icon: <Users /> },
+  ];
 
   return (
-    <>
-      <div className="homepage">
-        <header className="home-header">
-          <h1>CargoDo</h1>
-          <p className="greeting">Welcome <span>{user.username}</span></p>
-          <button className="logout" onClick={handleLogout}>Log out</button>
-        </header>
-        <p id="sec">Track, manage, and optimize your cargo operations in real time.</p>
-        <div className="button">
-          <Link to={'/create'}><button>Create</button></Link>
+    <div className="dashboard">
+      {/* Header */}
+      <header className="dashboard-header">
+        <div className="brand">
+          <h1 className="logo">Cargo<span>Do</span></h1>
+          <p>Welcome back, <span className="username">{user?.username}</span> 👋</p>
         </div>
+        <div className="header-actions">
+          <Link to="/create" className="create-btn">
+            <PlusCircle size={18} /> Create Package
+          </Link>
+          <button onClick={handleLogout} className="logout-btn">
+            <LogOut size={18} /> Logout
+          </button>
+        </div>
+      </header>
 
-        <section className="stats">
-          <Card>
-            <CardContent>
-              <Truck className="icon" />
-              <h2>{activeShipments}</h2>
-              <p>Active Shipments</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent>
-              <Package className="icon" />
-              <h2>{deliveredPackages}</h2>
-              <p>Packages Delivered</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent>
-              <ClipboardList className="icon" />
-              <h2>{pendingOrders}</h2>
-              <p>Pending Orders</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent>
-              <Users className="icon" />
-              <h2>{onTheWay}</h2>
-              <p>On The Way</p>
-            </CardContent>
-          </Card>
-        </section>
+      {/* Overview Section */}
+      <section className="overview">
+        <h2>Shipment Overview</h2>
+        <div className="stats-grid">
+          {stats.map((stat, index) => (
+            <div className="stat-card" key={index}>
+              <div className="icon-box">{stat.icon}</div>
+              <h3>{stat.value}</h3>
+              <p>{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        {/* Recent Activity */}
-        <section className="activity">
-          <h2>All of your packages</h2>
-          <ul>
-            {packages.length === 0 ? (
-              <li>No packages yet</li>
-            ) : (
-              packages.slice(-5).map(pkg => (
-                <li key={pkg.id}>
-                  📦 {pkg.title} (#{pkg.tracking_number}) — {pkg.status.replace("_", " ")} 
-                    <button onClick={() => handleEdit(pkg.id)} className="edit">Edit</button>
-                    <button  className="delete">Delete</button>
-
-                </li>
-              ))
-            )}
+      {/* Packages Section */}
+      <section className="packages">
+        <h2>Recent Packages</h2>
+        {packages.length === 0 ? (
+          <p className="empty">No packages found yet.</p>
+        ) : (
+          <ul className="package-list">
+            {packages.slice(-5).map(pkg => (
+              <li key={pkg.id} className="package-item">
+                <div className="pkg-info">
+                  <span className="pkg-title">📦 {pkg.title}</span>
+                  <span className="pkg-meta">#{pkg.tracking_number} — {pkg.status.replace("_", " ")}</span>
+                </div>
+                <div className="pkg-actions">
+                  <button onClick={() => handleEdit(pkg.id)} className="edit-btn">Edit</button>
+                  <button className="delete-btn">Delete</button>
+                </div>
+              </li>
+            ))}
           </ul>
-        </section>
-      </div>
-      <Footer />
-    </>
+        )}
+      </section>
+    </div>
   );
 }
