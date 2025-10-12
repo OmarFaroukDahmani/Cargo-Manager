@@ -1,33 +1,20 @@
-import React from 'react';
-import '../styles/footer.css';
+import "../styles/footer.css";
+import { Linkedin, Facebook } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-content">
-        {/* Logo + About */}
-        <div className="footer-logo-section">
-          <h2 className="footer-logo">CargoDo</h2>
-          <p className="footer-text">Connecting logistics businesses worldwide since 2025.</p>
-        </div>
+      <div className="footer-container">
+        <p>© {new Date().getFullYear()} CargoDo. All rights reserved.</p>
 
-        {/* Links */}
         <div className="footer-links">
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-          <a href="/privacy">Privacy Policy</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
+            <Linkedin />
+          </a>
+          <a href="https://cargodo.io" target="_blank" rel="noreferrer">
+            <Facebook />
+          </a>
         </div>
-
-        {/* Social */}
-        <div className="footer-socials">
-          <a href="#">🌐</a>
-          <a href="#">🐦</a>
-          <a href="#">📸</a>
-        </div>
-      </div>
-
-      <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} CargoDo. All rights reserved.</p>
       </div>
     </footer>
   );

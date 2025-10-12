@@ -1,95 +1,59 @@
 import { Truck, Package, Globe, Clock, Users } from "lucide-react";
-import Cargo from '/cargo.jpg';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import '../styles/home.css';
-import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import "../styles/home.css";
+import CargoImg from "/cargo.jpg";
 
 export default function Home() {
-  const [stats, setStats] = useState({ userCount: 0, packageCount: 0 });
-
-  useEffect(() => {
-    fetch("https://cargo-mangement-api-5d076fcb0967.herokuapp.com/stats")
-      .then((res) => res.json())
-      .then((data) => setStats(data))
-      .catch((err) => console.error("Failed to fetch stats:", err));
-  }, []);
-
   return (
     <>
       <Navbar />
-      <div className="landing">
-        {/* Hero Section */}
+      <main className="home">
+        {/* Hero */}
         <section className="hero">
           <div className="hero-overlay"></div>
           <div className="hero-content">
-            <h1>Manage Your Cargo with Ease</h1>
+            <h1>Streamline Your Logistics Operations</h1>
             <p>
-              Cargo Manager helps you track shipments, optimize delivery, and grow
-              your logistics business faster.
+              CargoDo empowers businesses to manage shipments, track packages, 
+              and scale delivery efficiency worldwide.
             </p>
             <div className="hero-buttons">
-              <a href="/sign-up" className="btn-primary">Get Started</a>
-              <a href="/learn-more" className="btn-secondary">Learn More</a>
+              <a href="/sign-up" className="btn-primary">Start for Free</a>
+              <a href="/learn-more" className="btn-outline">Learn More</a>
             </div>
-          </div>
-          <div className="hero-image">
-            <img src={Cargo} alt="Cargo" />
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Features */}
         <section className="features">
-          <h2>Why Choose Cargo Manager?</h2>
+          <h2>Powerful Features to Simplify Logistics</h2>
           <div className="feature-grid">
-            <div className="feature-card">
-              <Truck className="icon" />
-              <h3>Real-time Tracking</h3>
-              <p>Monitor your shipments live from pickup to delivery.</p>
-            </div>
-            <div className="feature-card">
-              <Package className="icon" />
-              <h3>Inventory Management</h3>
-              <p>Keep control over packages and warehouses in one place.</p>
-            </div>
-            <div className="feature-card">
-              <Globe className="icon" />
-              <h3>Global Reach</h3>
-              <p>Expand your logistics operations worldwide with ease.</p>
-            </div>
-            <div className="feature-card">
-              <Clock className="icon" />
-              <h3>Faster Delivery</h3>
-              <p>Save time and money with optimized delivery routes.</p>
-            </div>
+            <FeatureCard icon={<Truck />} title="Real-Time Tracking" desc="Track your cargo with live GPS and instant updates." />
+            <FeatureCard icon={<Package />} title="Smart Inventory" desc="Manage all your shipments in one centralized dashboard." />
+            <FeatureCard icon={<Globe />} title="Global Expansion" desc="Connect your logistics operations globally with ease." />
+            <FeatureCard icon={<Clock />} title="Optimized Delivery" desc="Accelerate delivery and minimize transit delays." />
           </div>
         </section>
 
-        {/* Statistics Section */}
-        <section className="stats">
-          <h2>Our Impact in Numbers</h2>
-          <div className="stats-grid">
-            <div className="stat">
-              <Users className="icon" />
-              <h3>{stats.userCount}</h3>
-              <p>Registered Users</p>
-            </div>
-            <div className="stat">
-              <Package className="icon" />
-              <h3>{stats.packageCount}</h3>
-              <p>Packages Managed</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Call to Action */}
+        {/* CTA */}
         <section className="cta">
-          <h2>Ready to Simplify Your Cargo Management?</h2>
-          <p>Join thousands of logistics businesses already using Cargo Manager.</p>
-          <a href="/sign-up" className="btn-primary">Start Free Trial</a>
+          <h2>Join 10,000+ businesses using CargoDo</h2>
+          <p>Start optimizing your supply chain today.</p>
+          <a href="/sign-up" className="btn-primary">Get Started</a>
         </section>
-      </div>
+      </main>
       <Footer />
     </>
+  );
+}
+
+function FeatureCard({ icon, title, desc }) {
+  return (
+    <div className="feature-card">
+      <div className="icon">{icon}</div>
+      <h3>{title}</h3>
+      <p>{desc}</p>
+    </div>
   );
 }
