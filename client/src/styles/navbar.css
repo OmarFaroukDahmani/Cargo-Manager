@@ -32,38 +32,23 @@
   color: #2563eb;
 }
 
-/* Hamburger Toggle */
 .nav-toggle {
-  display: block;           
+  display: none; 
   background: none;
   border: none;
   cursor: pointer;
-  color: white;            
+  color: white;
   position: relative;
-  z-index: 1100;            
+  z-index: 1100;
 }
 
-/* Sidebar menu */
 .nav-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 70%;
-  height: 100vh;
-  background: #1f2937;
-  flex-direction: column;
-  padding: 5rem 2rem;
+  display: flex; 
+  align-items: center;
   gap: 2rem;
-  transition: right 0.3s ease-in-out;
-  box-shadow: -2px 0 12px rgba(0,0,0,0.2);
-  z-index: 1050;           
 }
 
-/* Active menu */
-.nav-menu.active {
-  right: 0;
-}
-
+/* Reset mobile-specific styles for desktop */
 .nav-list {
   display: flex;
   gap: 2rem;
@@ -86,24 +71,24 @@
   border-bottom: 3px solid #2563eb;
 }
 
-/* Buttons */
+/* Buttons (Desktop Styles) */
 .nav-buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 0; /* Reset margin from mobile styles */
 }
 
 .btn-primary {
-  padding: 10px ;
-  width: 100px;
+  padding: 10px;
+  min-width: 100px; /* Use min-width instead of fixed width */
   background-color: #2563eb;
   color: white;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 800; /* Thicker button text */
   font-size: 1rem;
+  text-align: center;
   transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -113,14 +98,15 @@
 }
 
 .btn-outline {
-  padding: 10px ;
-  width: 100px;
+  padding: 10px;
+  min-width: 100px; 
   border: 2px solid #2563eb;
   border-radius: 8px;
   color: #2563eb;
   text-decoration: none;
-  font-weight: 800; /* Thicker button text */
+  font-weight: 800; 
   font-size: 1rem;
+  text-align: center;
   transition: all 0.3s, transform 0.2s;
 }
 
@@ -130,26 +116,29 @@
   transform: translateY(-2px);
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .nav-toggle {
-    display: block;
+    display: block; 
   }
 
+  
   .nav-menu {
-    position: fixed;
+    position: fixed; 
     top: 0;
-    right: -100%;
+    right: -100%; 
     width: 70%;
     height: 100vh;
     background: #1f2937;
     flex-direction: column;
+    align-items: flex-start; /* Align items to the left in the sidebar */
     padding: 5rem 2rem;
     gap: 2rem;
     transition: right 0.3s ease-in-out;
-    box-shadow: -2px 0 12px rgba(0,0,0,0.2);
+    box-shadow: -2px 0 12px rgba(0, 0, 0, 0.2);
+    z-index: 1050;
   }
 
+  /* Active menu - Slides in */
   .nav-menu.active {
     right: 0;
   }
@@ -157,12 +146,23 @@
   .nav-list {
     flex-direction: column;
     gap: 2rem;
-    text-align: center;
+    text-align: left; 
+    width: 100%; 
+  }
+
+  .nav-list li a {
+    display: block; 
   }
 
   .nav-buttons {
     flex-direction: column;
     gap: 1.5rem;
-    margin-left: 0;
+    margin-top: 30px;
+    width: 100%; 
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%; 
   }
 }

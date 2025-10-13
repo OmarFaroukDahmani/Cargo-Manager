@@ -13,6 +13,7 @@ export default function Navbar() {
           CargoDo
         </Link>
 
+        {/* The burger menu toggle button - Visible only on small screens */}
         <button
           className="nav-toggle"
           onClick={() => setOpen(!open)}
@@ -21,6 +22,7 @@ export default function Navbar() {
           {open ? <X size={30} /> : <Menu size={30} />}
         </button>
 
+        {/* The navigation menu - Displayed differently based on screen size */}
         <nav className={`nav-menu ${open ? "active" : ""}`}>
           <ul className="nav-list">
             <li><a href="#features" onClick={() => setOpen(false)}>Features</a></li>
@@ -29,8 +31,8 @@ export default function Navbar() {
           </ul>
 
           <div className="nav-buttons">
-            <Link to="/login" className="btn-outline">Log In</Link>
-            <Link to="/sign-up" className="btn-primary">Sign Up</Link>
+            <Link to="/login" className="btn-outline" onClick={() => setOpen(false)}>Log In</Link>
+            <Link to="/sign-up" className="btn-primary" onClick={() => setOpen(false)}>Sign Up</Link>
           </div>
         </nav>
       </div>
