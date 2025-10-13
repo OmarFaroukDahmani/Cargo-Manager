@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import '../styles/sign.css';
 
 export default function Login() {
@@ -63,6 +64,7 @@ export default function Login() {
           </p>
         </form>
       </div>
+            <Link to={'/'} className="back"> <button><ArrowLeft size={30} color="black" /></button> </Link>
     </div>
   );
 }

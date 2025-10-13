@@ -1,5 +1,6 @@
 import { Link, useNavigate} from "react-router-dom";
 import { useState } from "react";
+import { ArrowLeft } from 'lucide-react';
 import "../styles/sign.css";
 
 export default function Register() {
@@ -73,6 +74,7 @@ export default function Register() {
           </Link>
         </p>
       </div>
+      <Link to={'/'} className="back"> <button><ArrowLeft size={30} color="black" /></button> </Link>
     </div>
   );
 }
